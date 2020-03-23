@@ -74,7 +74,10 @@
 
             </ul>
           </div>
-          <div class="col-md-9">{% block content %}{% endblock %}</div>
+          <div class="col-md-9">
+            {{ include('alert.html.twig')}}
+
+          {% block content %}{% endblock %}</div>
         </div>
       </div>
         
