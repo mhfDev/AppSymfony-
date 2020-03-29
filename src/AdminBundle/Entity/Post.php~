@@ -5,12 +5,12 @@ namespace AdminBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Category
+ * Post
  *
- * @ORM\Table(name="category")
- * @ORM\Entity(repositoryClass="AdminBundle\Repository\CategoryRepository")
+ * @ORM\Table(name="post")
+ * @ORM\Entity(repositoryClass="AdminBundle\Repository\PostRepository")
  */
-class Category
+class Post
 {
     /**
      * @var int
@@ -24,37 +24,42 @@ class Category
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=80)
+     * @ORM\Column(name="title", type="string", length=120)
      */
     private $title;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=255, nullable=true)
+     * @ORM\Column(name="description", type="string", length=255)
      */
     private $description;
+    /**
+     * 
+     *@ORM\ManyToMany(targetEntity="AdminBundle\Entity\Category")
+     */
+    private $categories;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="slug", type="string", length=100, nullable=true)
+     * @ORM\Column(name="text", type="string", length=255)
+     */
+    private $text;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="slug", type="string", length=255)
      */
     private $slug;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="createdAt", type="datetime",nullable=true)
+     * @ORM\Column(name="datepublish", type="datetime", nullable=true)
      */
-    private $createdAt;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="updatedAt", type="datetime",nullable=true)
-     */
-    private $updatedAt;
+    private $datepublish;
 
 
     /**
@@ -72,7 +77,7 @@ class Category
      *
      * @param string $title
      *
-     * @return Category
+     * @return Post
      */
     public function setTitle($title)
     {
@@ -96,7 +101,7 @@ class Category
      *
      * @param string $description
      *
-     * @return Category
+     * @return Post
      */
     public function setDescription($description)
     {
@@ -116,11 +121,35 @@ class Category
     }
 
     /**
+     * Set text
+     *
+     * @param string $text
+     *
+     * @return Post
+     */
+    public function setText($text)
+    {
+        $this->text = $text;
+
+        return $this;
+    }
+
+    /**
+     * Get text
+     *
+     * @return string
+     */
+    public function getText()
+    {
+        return $this->text;
+    }
+
+    /**
      * Set slug
      *
      * @param string $slug
      *
-     * @return Category
+     * @return Post
      */
     public function setSlug($slug)
     {
@@ -140,50 +169,27 @@ class Category
     }
 
     /**
-     * Set createdAt
+     * Set datepublish
      *
-     * @param \DateTime $createdAt
+     * @param \DateTime $datepublish
      *
-     * @return Category
+     * @return Post
      */
-    public function setCreatedAt($createdAt)
+    public function setDatepublish($datepublish)
     {
-        $this->createdAt = $createdAt;
+        $this->datepublish = $datepublish;
 
         return $this;
     }
 
     /**
-     * Get createdAt
+     * Get datepublish
      *
      * @return \DateTime
      */
-    public function getCreatedAt()
+    public function getDatepublish()
     {
-        return $this->createdAt;
-    }
-
-    /**
-     * Set updatedAt
-     *
-     * @param \DateTime $updatedAt
-     *
-     * @return Category
-     */
-    public function setUpdatedAt($updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get updatedAt
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
+        return $this->datepublish;
     }
 }
+

@@ -36,12 +36,16 @@
         {% endfor %}
         </tbody>
     </table>
+    <div class="navigation">
+        {{ knp_pagination_render(categories)}}
+
+    </div>
 
     
 {% endblock %}
 {% block breadcrumb %}
-    <ul class="breadcrumb">
-        <li><a href=""> Tableau de bord</a></li>
-        <li class="active"> Liste des Catégories</li>
-    </ul>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href=""> Tableau de bord</a></li>
+        <li class="breadcrumb-item active"> Liste des Catégories</li>
+    </ol>
 {% endblock %}

@@ -1,21 +1,18 @@
 {% extends 'back.html.twig' %}
 
 {% block content %}
-
-<div class="panel panel-default" >
-    <div class="panel-heading">
-        <h3 class="panel-title"> {{category.title}}</h3>
-    </div>
-    <div class="panel-body">
-        <h5>{{ category.slug }}</h5>
-        <p>{{ category.description }}</p>
-        <small>
-           Crée le: {{ category.createdAt|date('d/m/Y') }}
-           Modifié le : {{ category.updatedAt|date('d/m/Y') }}
-
-        </small>
-    </div>
+<div class="card border-secondary m" >
+  <div class="card-header"><h3 class="card-title"> {{category.title}}</h3></div>
+  <div class="card-body">
+    <h4 class="card-title">{{ category.slug }}</h4>
+    <p class="card-text">{{ category.description }}</p>
+  </div>
+   <div class="card-footer text-muted">
+    Crée le: {{ category.createdAt|date('d/m/Y') }}
+    Modifié le : {{ category.updatedAt|date('d/m/Y') }}
+  </div>
 </div>
+
   
 
     
