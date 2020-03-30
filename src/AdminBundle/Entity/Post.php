@@ -3,6 +3,7 @@
 namespace AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Post
@@ -53,6 +54,13 @@ class Post
      * @ORM\Column(name="slug", type="string", length=255)
      */
     private $slug;
+     /**
+     * @ORM\Column(type="string")
+     * @Assert\NotBlank(groups={"new"},message="Merci de mettre une image!")
+     * @Assert\File(mimeTypes={"image/png","image/jpeg"})
+     * 
+     */
+    private $image;
 
     /**
      * @var \DateTime
@@ -231,5 +239,29 @@ class Post
     public function getCategories()
     {
         return $this->categories;
+    }
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     *
+     * @return Post
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }
